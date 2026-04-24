@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// เช็ค path การ import โมดอลของคุณให้ตรงกับของจริงด้วยนะครับ
 import AddElderlyModal from "./../../components/layout/Topbar"; 
 import AddCaregiverModal from "../../components/layout/AddCaregiverModal";
 import {
