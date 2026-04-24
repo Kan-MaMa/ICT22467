@@ -372,7 +372,7 @@ export default function SmartMapPage() {
             </div>
           </div>
 
-          {/* 🚨 🚨 ส่วนสรุปเหตุ (SUMMARY CARD) - คืนกลับมาแล้วครับ 🚨 🚨 */}
+          {/* 🚨 🚨 ส่วนสรุปเหตุ (SUMMARY CARD) 🚨 🚨 */}
           <div className="rounded-[28px] border border-slate-100 bg-white p-5 shadow-sm">
             <div className="flex items-center gap-2 mb-4 text-[#0095B6]">
               <ShieldAlert size={20} />
