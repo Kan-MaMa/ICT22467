@@ -21,7 +21,6 @@ export default function App() {
   
   return (
     <>
-      {/* ระบบแจ้งเตือนครอบคลุมทุกหน้า */}
       <Toaster 
         position="top-center"
         toastOptions={{
@@ -42,15 +41,11 @@ export default function App() {
       <GlobalEmergencyAlert />
 
       <Routes>
-        {/* 🟢 โซนสาธารณะ (Public Routes): ใครก็เข้าได้ */}
-        
-        {/* 🚨 แก้ไขตรงนี้: เปลี่ยนให้ "/" วิ่งไปที่ "/dashboard" แทน "/login" */}
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         
-        {/* 🔴 โซนหวงห้าม (Protected Routes): ต้องผ่านด่าน ProtectedRoute ก่อน */}
         <Route element={<ProtectedRoute />}>
           
           {/* ให้ MainLayout เป็นตัวคลุมหน้าเว็บที่มี Sidebar อีกที */}

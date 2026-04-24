@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// เช็ค path การ import โมดอลของคุณให้ตรงกับของจริงด้วยนะครับ
 import AddElderlyModal from "./../../components/layout/Topbar"; 
 import AddCaregiverModal from "../../components/layout/AddCaregiverModal";
 import {
@@ -91,7 +90,6 @@ export default function DashboardPage() {
 
   // 🚨 ตัวกรองผู้ที่วัดสัญญาณชีพในวันนี้ (แยกจากการแก้ไขประวัติส่วนตัว)
   const measuredTodayList = elderlyList.filter(person => {
-    // ต้องมีฟิลด์ lastVitalsUpdate และมีค่าสัญญาณชีพ
     if (!person.lastVitalsUpdate) return false;
     if (!person.heartRate || person.heartRate === "-" || person.heartRate === "--") return false;
 

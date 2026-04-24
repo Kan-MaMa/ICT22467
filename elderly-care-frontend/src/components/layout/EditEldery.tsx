@@ -25,9 +25,9 @@ export default function EditElderlyModal({ isOpen, onClose, personData }: Props)
         lastName: personData.lastName || "",
         birthDate: personData.birthDate || "",
         gender: personData.gender || "ชาย",
-        address: personData.address || "", // 🚨 เพิ่มที่อยู่
-        currentLat: personData.currentLat || 0, // 🚨 เพิ่มพิกัด Lat
-        currentLng: personData.currentLng || 0, // 🚨 เพิ่มพิกัด Lng
+        address: personData.address || "",
+        currentLat: personData.currentLat || 0, 
+        currentLng: personData.currentLng || 0, 
         diseaseDetails: personData.congenitalDisease === "ไม่มี" ? "" : personData.congenitalDisease,
         medicationDetails: personData.medications === "ไม่มี" ? "" : personData.medications,
       });
@@ -37,7 +37,7 @@ export default function EditElderlyModal({ isOpen, onClose, personData }: Props)
     }
   }, [personData]);
 
-  // 🚨 ฟังก์ชันดึงพิกัดปัจจุบันสำหรับการแก้ไข
+  // ฟังก์ชันดึงพิกัดปัจจุบันสำหรับการแก้ไข
   const getCurrentLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -53,7 +53,7 @@ export default function EditElderlyModal({ isOpen, onClose, personData }: Props)
     }
   };
 
-  // 🚨 ฟังก์ชันแปลงที่อยู่เป็นพิกัด (กรณีผู้ใช้พิมพ์ที่อยู่ใหม่แต่ไม่ได้กดดึงพิกัดปัจจุบัน)
+  // ฟังก์ชันแปลงที่อยู่เป็นพิกัด (กรณีผู้ใช้พิมพ์ที่อยู่ใหม่แต่ไม่ได้กดดึงพิกัดปัจจุบัน)
   const getCoordsFromAddress = async (address: string) => {
     try {
       const response = await fetch(
@@ -78,8 +78,6 @@ export default function EditElderlyModal({ isOpen, onClose, personData }: Props)
       let finalLat = formData.currentLat;
       let finalLng = formData.currentLng;
 
-      // ถ้ามีการเปลี่ยนที่อยู่ แต่พิกัดยังเป็น 0 หรือต้องการความแม่นยำ
-      // ให้ลองเช็คพิกัดจากที่อยู่อีกรอบ (ถ้าไม่ได้กดปุ่มดึงพิกัดปัจจุบัน)
       if (finalLat === 0 || formData.address !== personData.address) {
          const coords = await getCoordsFromAddress(formData.address);
          if (coords) {

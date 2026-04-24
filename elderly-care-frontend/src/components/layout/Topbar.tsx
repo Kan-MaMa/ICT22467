@@ -85,7 +85,7 @@ export default function AddElderlyModal({ isOpen, onClose }: Props) {
         birthDate: formData.birthDate,
         age: calculateAge(formData.birthDate),
         gender: formData.gender,
-        currentLat: 0, // ค่าเริ่มต้นสำหรับแผนที่
+        currentLat: 0,
         currentLng: 0,
         congenitalDisease:
           formData.hasDisease === "yes" ? formData.diseaseDetails : "ไม่มี",

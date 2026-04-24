@@ -220,7 +220,7 @@ export default function SmartMapPage() {
     fetchPlaces();
   }, [activeLat, activeLng, selectedPerson?.id, simulatedEvent?.happenedAt?.getTime()]);
 
-  // 🚨 ตัวแปรสำหรับคอลัมน์ "สรุปเหตุ"
+  // ตัวแปรสำหรับคอลัมน์ "สรุปเหตุ"
   const severityLabel = simulatedEvent?.severityLabel || selectedPerson?.lastFallSeverity || routeState.severity || "ไม่ระบุ";
   const selectedHospitalName = simulatedEvent?.nearestHospital?.name || selectedPerson?.hospitalName || nearbyPlaces[0]?.name || "ยังไม่ระบุ";
   const latestSelectedLog = useMemo(() => {
@@ -264,7 +264,7 @@ export default function SmartMapPage() {
       const healthFacilities = places.filter((h: any) => !h?.name?.includes("สัตว์"));
       const nearestHospital = healthFacilities.length > 0 ? healthFacilities[0] : null;
 
-      // 🚨 1. สร้าง ID แบบ EM001
+      // สร้าง ID แบบ Emergency
       const emSnap = await getDocs(collection(db, "emergency_logs"));
       let maxEmId = 0;
       emSnap.forEach((d) => {
@@ -275,7 +275,7 @@ export default function SmartMapPage() {
       });
       const newEmId = `EM${String(maxEmId + 1).padStart(3, "0")}`;
 
-      // 2. อัปเดตข้อมูลผู้สูงอายุ (แนบ ID ล่าสุดไปด้วย เผื่อโชว์ในตาราง)
+      // อัปเดตข้อมูลผู้สูงอายุ (แนบ ID ล่าสุดไปด้วย เผื่อโชว์ในตาราง)
       await updateDoc(doc(db, "elderly", selectedPerson.id), {
         latest_emergency_id: newEmId, // 🚨 เอาไปโชว์ในตารางได้เลย
         currentLat: generated.lat, currentLng: generated.lng, isFallen: true,
@@ -284,7 +284,7 @@ export default function SmartMapPage() {
         hospitalName: nearestHospital?.name || "", address: generated.zoneName, updatedAt: serverTimestamp(),
       });
 
-      // 🚨 3. บันทึกลง emergency_logs ด้วยรหัสใหม่ EMxxx
+      // 🚨 บันทึกลง emergency_logs ด้วยรหัสใหม่ EMxxx
       await setDoc(doc(db, "emergency_logs", newEmId), {
         emergency_id: newEmId, // เก็บลงไปในฟิลด์ด้วย
         elderlyId: selectedPerson.id, fullName: selectedPerson.fullName,

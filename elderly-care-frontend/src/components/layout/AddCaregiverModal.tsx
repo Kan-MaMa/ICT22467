@@ -28,7 +28,7 @@ export default function AddCaregiverModal({ isOpen, onClose, elderlyId }: Props)
     birthDate: "",
   });
 
-  // 🚨 สร้างตัวแปรเก็บวันที่ปัจจุบันในรูปแบบ YYYY-MM-DD เพื่อเอาไปล็อคปฏิทิน
+  // สร้างตัวแปรเก็บวันที่ปัจจุบันในรูปแบบ YYYY-MM-DD เพื่อเอาไปล็อคปฏิทิน
   const d = new Date();
   const maxDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 

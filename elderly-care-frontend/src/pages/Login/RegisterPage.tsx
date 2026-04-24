@@ -50,7 +50,7 @@ export default function RegisterPage() {
     setPwdStrength(score);
   }, [password]);
 
-  // 🚨 2. ฟังก์ชันรันรหัสแอดมิน (A001, A002, A003...)
+  // ฟังก์ชันรันรหัสแอดมิน 
   const findNextAvailableAdminId = async () => {
     const adminRef = collection(db, "admins");
     const snap = await getDocs(adminRef);
@@ -89,10 +89,10 @@ export default function RegisterPage() {
 
       await updateProfile(user, { displayName: name });
 
-      // 🚨 3. สร้างรหัส Admin อัตโนมัติ
+      // สร้างรหัส Admin อัตโนมัติ
       const nextAdminId = await findNextAvailableAdminId();
 
-      // 🚨 4. บันทึกลงคอลเลกชัน "admins" (อิงตามฐานข้อมูลของคุณ)
+      // บันทึกลงคอลเลกชัน "admins" (อิงตามฐานข้อมูลของคุณ)
       await setDoc(doc(db, "admins", user.uid), {
         admin_id: nextAdminId, // รหัส A001, A002...
         admin_name: name,

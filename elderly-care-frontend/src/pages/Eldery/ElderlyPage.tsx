@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { collection, onSnapshot, query, orderBy, doc, deleteDoc, updateDoc, getDocs, where, limit, serverTimestamp, documentId } from "firebase/firestore";
 import { db } from "../../services/firebase";
 import { useNavigate } from "react-router-dom";
-import { UserCircle, Trash2, Edit2 } from "lucide-react"; // เพิ่ม Edit2
+import { UserCircle, Trash2, Edit2 } from "lucide-react"; 
 import { calculateAge } from "../../unit/calculateAge";
 import EditElderlyModal from "../../components/layout/EditEldery";
 
@@ -51,7 +51,7 @@ export default function ElderlyPage() {
       const snap = await getDocs(q);
 
       if (!snap.empty) {
-        // 3. นำข้อมูลมาเรียงลำดับหาตัวล่าสุดด้วย JavaScript แทน
+        // นำข้อมูลมาเรียงลำดับหาตัวล่าสุดด้วย JavaScript แทน
         const logs = snap.docs.map(d => ({ ref: d.ref, data: d.data() }));
         logs.sort((a, b) => {
           const timeA = a.data.timestamp?.toMillis() || 0;
@@ -62,7 +62,7 @@ export default function ElderlyPage() {
         const latestLog = logs[0];
         const currentStatus = latestLog.data.status || "";
 
-        // 4. อัปเดตสถานะ Log เป็นปลอดภัยแล้ว
+        // อัปเดตสถานะ Log เป็นปลอดภัยแล้ว
         if (
           currentStatus.includes("รอดำเนินการ") || 
           currentStatus.includes("กำลังช่วยเหลือ") || 
@@ -112,7 +112,6 @@ export default function ElderlyPage() {
           return (
             <div key={person.id} className={`group relative rounded-[32px] border bg-white p-6 shadow-sm transition-all hover:shadow-md ${isFallen ? "border-rose-500 ring-4 ring-rose-100" : "border-slate-200"}`}>
               
-              {/* 🟢 ปุ่มลบ (ขยับตำแหน่งไปทางซ้ายเล็กน้อย) */}
               <button 
                 onClick={(e) => handleDelete(e, person.id, person.fullName)} 
                 className="absolute top-6 right-20 p-2 text-slate-300 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-all"
@@ -121,7 +120,6 @@ export default function ElderlyPage() {
                 <Trash2 size={18} />
               </button>
 
-              {/* 🟢 ปุ่มแก้ไข (รูปดินสอ) - เพิ่มใหม่ */}
               <button 
                 onClick={(e) => handleEdit(e, person)} 
                 className="absolute top-6 right-28 p-2 text-slate-300 hover:text-cyan-500 opacity-0 group-hover:opacity-100 transition-all"
@@ -136,7 +134,6 @@ export default function ElderlyPage() {
 
               <div className="flex-1">
                   <h3 className="text-xl font-bold text-slate-900">{person.fullName}</h3>
-                  {/* 🚨 เพิ่มโชว์ ID ไว้ข้างๆ อายุ */}
                   <p className="text-slate-500 font-medium">
                     <span className="text-cyan-600 font-bold mr-2">[{person.id}]</span>
                     อายุ {person.birthDate ? calculateAge(person.birthDate) : "--"} ปี

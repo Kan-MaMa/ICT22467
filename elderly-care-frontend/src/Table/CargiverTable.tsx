@@ -42,7 +42,6 @@ export default function CaregiverTablePage() {
             <thead className="bg-slate-50 text-slate-800 border-b border-slate-200">
               <tr>
                 <th className="p-4 font-bold">รหัสผู้ดูแล</th>
-                {/* 🚨 เพิ่มคอลัมน์ รหัสผู้สูงอายุที่ดูแล */}
                 <th className="p-4 font-bold">ดูแลผู้สูงอายุ (ID)</th> 
                 <th className="p-4 font-bold">คำนำหน้า</th>
                 <th className="p-4 font-bold">ชื่อผู้ดูแล</th>
@@ -57,14 +56,13 @@ export default function CaregiverTablePage() {
                   <tr key={person.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
                     <td className="p-4 font-bold text-emerald-600">{person.caregiverId || person.id}</td>
                     
-                    {/* 🚨 ดึงรหัสผู้สูงอายุมาแสดง (ดักชื่อตัวแปร elderlyId และ elderly_id) */}
                     <td className="p-4 font-bold text-cyan-600 max-w-[200px]">
                       {(() => {
                         const rawId = person.elderlyId || person.elderly_id;
                         // ถ้าไม่มีข้อมูล ให้โชว์ขีด
                         if (!rawId || rawId.length === 0) return <span className="text-slate-300">-</span>;
                         
-                        // แปลงข้อมูลให้เป็น Array เสมอ (รองรับทั้งแบบ Array จาก Firebase และ String ที่คั่นด้วยลูกน้ำ)
+                       
                         const idList = Array.isArray(rawId) ? rawId : String(rawId).split(",").map(s => s.trim());
                         
                         return (
@@ -97,7 +95,7 @@ export default function CaregiverTablePage() {
                         return (
                           <div className="flex flex-col gap-1.5">
                             {idList.map((id: string, index: number) => {
-                              // ดึงสถานะจาก relationMap ก่อน ถ้าไม่มีค่อยไปดึงของเก่า
+
                               const rel = person.relationMap?.[id] || person.relationship || person.relation || "-";
                               return (
                                 <div key={index} className="flex items-center gap-2">

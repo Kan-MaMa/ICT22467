@@ -46,7 +46,7 @@ return (
             <p className="mt-1 text-sm text-slate-500">กรุณาเข้าสู่ระบบ</p>
           </div>
 
-          {/* 🚨 2. ใส่ autoComplete="off" ที่ฟอร์ม เพื่อปิดการจำค่ามั่วๆ ของบราว์เซอร์ */}
+          {/* ใส่ autoComplete="off" ที่ฟอร์ม เพื่อปิดการจำค่ามั่วๆ ของบราว์เซอร์ */}
           <form onSubmit={handleLogin} className="space-y-5" autoComplete="off">
             <div>
               <label className="mb-1.5 block text-sm font-bold text-slate-700">อีเมล</label>
@@ -59,7 +59,6 @@ return (
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  // 🚨 3. ปิดการจำอีเมล
                   autoComplete="off" 
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 text-slate-800 outline-none transition-all focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10"
                   placeholder="name@example.com"
@@ -78,7 +77,7 @@ return (
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  // 🚨 4. ใช้ ทริค "new-password" เพื่อบังคับบราว์เซอร์ไม่ให้ยัดรหัสผ่านเก่าลงมา
+                  // ใช้ "new-password" เพื่อบังคับบราว์เซอร์ไม่ให้ยัดรหัสผ่านเก่าลงมา
                   autoComplete="new-password" 
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 text-slate-800 outline-none transition-all focus:border-cyan-500 focus:bg-white focus:ring-4 focus:ring-cyan-500/10"
                   placeholder="••••••••"

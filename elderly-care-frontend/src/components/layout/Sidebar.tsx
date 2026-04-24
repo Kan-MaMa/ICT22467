@@ -24,12 +24,11 @@ export default function Sidebar() {
 
   // 🚨ฟังก์ชันสำหรับออกจากระบบ
   const handleLogout = async () => {
-    // ถามเพื่อความแน่ใจก่อนออกจากระบบ
     if (window.confirm("คุณต้องการออกจากระบบใช่หรือไม่?")) {
       try {
         await signOut(auth);
         toast.success("ออกจากระบบเรียบร้อยแล้ว");
-        navigate("/login"); // เตะกลับไปหน้า Login
+        navigate("/login");
       } catch (error) {
         console.error("Logout Error:", error);
         toast.error("เกิดข้อผิดพลาดในการออกจากระบบ");
@@ -38,7 +37,6 @@ export default function Sidebar() {
   };
 
   return (
-    // เพิ่ม relative เพื่อให้จัดตำแหน่งปุ่ม Logout ไว้ด้านล่างสุดได้
     <aside className="hidden w-72 shrink-0 border-r border-slate-200 bg-white xl:flex xl:flex-col relative">
       <div 
         onClick={() => navigate("/")} 

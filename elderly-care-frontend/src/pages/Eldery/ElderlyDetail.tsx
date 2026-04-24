@@ -366,7 +366,6 @@ export default function ElderlyDetailPage() {
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-6">
-          {/* 🚨 อัปเดต Card ข้อมูลทางการแพทย์ ให้มีปุ่มแก้ไข */}
           <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm">
             <div className="mb-6 flex items-center justify-between border-b border-slate-50 pb-4">
               <div className="flex items-center gap-3 text-[#0095B6]">
