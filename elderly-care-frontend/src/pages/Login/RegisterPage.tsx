@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-// 🚨 1. เพิ่ม getDocs และ collection เพื่อใช้ดึงรันรหัส A001 อัตโนมัติ
 import { doc, setDoc, serverTimestamp, collection, getDocs } from "firebase/firestore"; 
 import { auth, db } from "../../services/firebase"; 
 import toast from "react-hot-toast";
