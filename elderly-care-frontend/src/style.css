@@ -1,0 +1,7 @@
+/* src/index.css */
+@import "tailwindcss";
+
+/* optional global */
+body {
+  margin: 0;
+}
