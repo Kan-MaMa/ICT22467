@@ -63,3 +63,5 @@ https://wokwi.com/projects/462187352345797633
 2. เปิด Terminal ในโฟลเดอร์โปรเจกต์แล้วพิมพ์คำสั่ง: npm install (เช็คด้วยว่าในเครื่องมี node.js หรือยังโดยการพิมพ์คำสั่ง node -v ถ้าไม่ขึ้นเวอร์ชันให้ทำการติดตั้ง)
 3. ตั้งค่า Firebase: ตรวจสอบไฟล์ src/services/firebase.js ว่ามีการใส่ Config API Key ตรงกับฐานข้อมูลหรือไม่
 4. รันระบบ: พิมพ์คำสั่งด้านล่างเพื่อเปิดหน้าเว็บ: npm run dev
+
+Link Canva : https://canva.link/unepthmi2dff7fu
